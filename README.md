@@ -163,3 +163,61 @@ workspace에서 정상 업로드 확인
 - yml 코드
 
 정상 사용을 위해서 mallid json 파일/pbixproj.json 수정 자동화 방법을 모색해야 함
+
+
+
+
+# 참고
+
+## PowerBI 사용자 활동 이벤트 확인
+
+[https://learn.microsoft.com/ko-kr/power-bi/admin/service-admin-auditing#use-the-activity-log](https://learn.microsoft.com/ko-kr/power-bi/admin/service-admin-auditing#use-the-activity-log)
+
+2가지 방법
+
+1. ****ActivityEvents REST API****
+    
+    rest API를 통한 배포 시 사용
+    
+2. ****Get-PowerBIActivityEvent cmdlet****
+    
+    PowerShell용 Power BI 관리 cmdlet 설치 후 사용
+    
+3. ****감사 로그 사용****
+    
+    power bi 관리포털에서 설정
+    
+
+3가지 방법 중 cmdlet 방법을 정리
+
+****Get-PowerBIActivityEvent cmdlet****
+
+설치
+
+[https://www.powershellgallery.com/packages/MicrosoftPowerBIMgmt/1.2.1111](https://www.powershellgallery.com/packages/MicrosoftPowerBIMgmt/1.2.1111)
+
+Power Shell
+
+```jsx
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+**설치 후 터미널에서 입력**
+
+```jsx
+Login-PowerBI
+
+$activities = Get-PowerBIActivityEvent -StartDateTime '2019-08-31T00:00:00' -EndDateTime '2019-08-31T23:59:59' | ConvertFrom-Json
+
+$activities.Count
+$activities[0]
+```
+
+```jsx
+Login-PowerBI
+
+$activities = Get-PowerBIActivityEvent -StartDateTime '2019-08-31T00:00:00' -EndDateTime '2019-08-31T23:59:59' -ActivityType 'ViewDashboard' | ConvertFrom-Json
+
+$activities.Count
+$activities[0]
+```
