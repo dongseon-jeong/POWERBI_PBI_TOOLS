@@ -1,0 +1,176 @@
+{
+    "name": "8a29fe03a9ee89b0571f",
+    "layouts": [
+      {
+        "id": 0,
+        "position": {
+          "x": 973.50559862187777,
+          "y": 18.742463393626185,
+          "z": 0,
+          "width": 291.05943152454779,
+          "height": 178.6046511627907,
+          "tabOrder": 0
+        }
+      }
+    ],
+    "singleVisual": {
+      "visualType": "slicer",
+      "projections": {
+        "Values": [
+          {
+            "queryRef": "DT_E_MALLID.mallid",
+            "active": true
+          }
+        ]
+      },
+      "prototypeQuery": {
+        "Version": 2,
+        "From": [
+          {
+            "Name": "d",
+            "Entity": "DT_E_MALLID",
+            "Type": 0
+          }
+        ],
+        "Select": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Source": "d"
+                }
+              },
+              "Property": "mallid"
+            },
+            "Name": "DT_E_MALLID.mallid"
+          }
+        ]
+      },
+      "syncGroup": {
+        "groupName": "mallid1",
+        "fieldChanges": true,
+        "filterChanges": true
+      },
+      "drillFilterOtherVisuals": true,
+      "objects": {
+        "data": [
+          {
+            "properties": {
+              "mode": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Basic'"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "items": [
+          {
+            "properties": {
+              "textSize": {
+                "expr": {
+                  "Literal": {
+                    "Value": "15D"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "general": [
+          {
+            "properties": {
+              "selfFilterEnabled": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              },
+              "selfFilter": {
+                "filter": {
+                  "Version": 2,
+                  "From": [
+                    {
+                      "Name": "d",
+                      "Entity": "DT_E_MALLID",
+                      "Type": 0
+                    }
+                  ],
+                  "Where": [
+                    {
+                      "Condition": {
+                        "Contains": {
+                          "Left": {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "d"
+                                }
+                              },
+                              "Property": "mallid"
+                            }
+                          },
+                          "Right": {
+                            "Literal": {
+                              "Value": "'1046'"
+                            }
+                          }
+                        }
+                      },
+                      "Annotations": {
+                        "PowerBI.MParameterBehavior": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              "filter": {
+                "filter": {
+                  "Version": 2,
+                  "From": [
+                    {
+                      "Name": "d",
+                      "Entity": "DT_E_MALLID",
+                      "Type": 0
+                    }
+                  ],
+                  "Where": [
+                    {
+                      "Condition": {
+                        "In": {
+                          "Expressions": [
+                            {
+                              "Column": {
+                                "Expression": {
+                                  "SourceRef": {
+                                    "Source": "d"
+                                  }
+                                },
+                                "Property": "mallid"
+                              }
+                            }
+                          ],
+                          "Values": [
+                            [
+                              {
+                                "Literal": {
+                                  "Value": "'1046'"
+                                }
+                              }
+                            ]
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }

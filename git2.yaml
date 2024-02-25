@@ -1,0 +1,25 @@
+trigger:
+- main
+
+variables:
+  PROFILE: Model
+  ENVIRONMENT: Development
+
+jobs:
+  
+- deployment: Deploy
+  displayName: Deploy to Environment
+  pool:
+    vmImage: ubuntu-latest
+  container: ghcr.io/pbi-tools/pbi-tools-core:latest
+
+  environment: $(ENVIRONMENT)
+  strategy:
+    runOnce:
+      deploy:  
+        steps:
+        - checkout: self
+        - script: /app/pbi-tools/pbi-tools.core deploy . "$(PROFILE)" "$(ENVIRONMENT)"
+          displayName: 'pbi-tools Deploy'
+          env:
+            PBI_CLIENT_SECRET: "{your_key}"
